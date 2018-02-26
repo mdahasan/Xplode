@@ -35,6 +35,8 @@ def check_compatibility(X):
 	# if columns have string values then not compatible
 	# if int or float values, then compatible
 
+	# needs to change, code it to accept categorical values
+
 	samples, columns = X.shape
 
 	compatability = True
