@@ -94,7 +94,7 @@ def generate_random_sample(X, feature_type_list):
 		gap = 0.001
 
 		feat = np.array(X[col_names[i]].tolist())
-		freq, edges = np.histogram(feat, bins = 'doane')
+		freq, edges = np.histogram(feat, bins = 'fd')
 		freq_sum = np.sum(freq)
 
 		# build bin range
@@ -114,15 +114,15 @@ def generate_random_sample(X, feature_type_list):
 		# between (0.001, 0.5) as probability distribution and
 		# assign index with each one of them
 
-		# unique random probabilites [0.001, 0.5, 100000]
-		probs = np.random.uniform(0.001, 0.5, 100000)
+		# unique random probabilites [0.001, 0.9, 1000]
+		probs = np.random.uniform(0.001, 0.9, 1000)
 
 		# unique random indices for each probabilites
-		indices = range(1, 100001)
+		indices = range(1, 1001)
 		random.shuffle(indices)
 
 		# choose a probability
-		random_index = random.randint(1, 100000)
+		random_index = random.randint(1, 1000)
 
 		prob_index = indices.index(random_index)
 		prob = probs[prob_index]
@@ -150,11 +150,11 @@ def ks_test(x, D):
 		ks_stat, p = stats.ks_2samp(x, y)
 
 		p_val_list.append(p)
-		if(p > 0.05):
+		if(p > 0.01):
 			accepting_p_val_list.append(p)
 
 	# check proportion of satisfying p-value 
-	if(len(accepting_p_val_list)/float(samples) > 0.75):
+	if(len(accepting_p_val_list)/float(samples) > 0.9):
 		return True
 	else:
 		return False
@@ -168,3 +168,6 @@ def change_class_label(y):
 
 def shuffle_data(D):
 	return D.sample(frac = 1).reset_index(drop = True)
+
+
+	

@@ -54,7 +54,7 @@ def process_binary_class_data(X, samples_to_add = None):
 		class_column_values = D.loc[:, class_label]
 		new_class_label = change_class_label(class_column_values)
 		D.drop(class_label, axis = 1, inplace = True)
-		D['class'] = pd.Series(new_class_label).values
+		D[class_label] = pd.Series(new_class_label).values
 
 	# shuffling dataset
 	X_shuffle = shuffle_data(D)

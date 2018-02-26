@@ -28,7 +28,13 @@ def main():
 	if(len(unique_classes) == 2):
 		D, _ = process_binary_class_data(original_X)
 		D.to_csv('resampled_' + str(dataset_name), sep = ',')
-		binary_classification_report(D)
+		cv_score, mean_cv_score, roc_auc, acc = binary_classification_report(D)
+
+		print('Binary Classification Results: ')
+		print('Average CV Score: ' + str(np.mean(cv_score)))
+		print('Mean CV score: ' + str(mean_cv_score))
+		print('ROC AUC: ' + str(roc_auc))
+		print('Accuracy: ' + str(acc))
 
 	elif(len(unique_classes) > 2):
 		D = process_mutliple_class_data(original_X)

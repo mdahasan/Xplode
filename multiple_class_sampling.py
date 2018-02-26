@@ -51,7 +51,7 @@ def process_mutliple_class_data(X):
 
 		temp_X = copy.deepcopy(X)			# make a copy of the original dataframe
 		temp_X.drop(class_label, axis = 1, inplace = True)
-		temp_X['class'] = pd.Series(new_class_column).values
+		temp_X[class_label] = pd.Series(new_class_column, index = temp_X.index)
 
 		_, synthetic_DF = process_binary_class_data(temp_X, (final_sample_size - base_class_count))
 
@@ -59,7 +59,7 @@ def process_mutliple_class_data(X):
 		syn_sample, syn_feat = synthetic_DF.shape
 		syn_class_label = [base_class] * syn_sample
 		synthetic_DF.drop(synthetic_DF.columns[syn_feat - 1], axis = 1)
-		synthetic_DF['class'] = syn_class_label
+		synthetic_DF[class_label] = syn_class_label
 
 		class_synthetic_sample_dict[base_class] = synthetic_DF
 
@@ -73,7 +73,7 @@ def process_mutliple_class_data(X):
 		class_column_values = D.loc[:, class_label]
 		new_class_label = change_class_label(class_column_values)
 		D.drop(class_label, axis = 1, inplace = True)
-		D['class'] = pd.Series(new_class_label).values
+		D[class_label] = pd.Series(new_class_label, index = D.index)
 
 	# shuffling dataset
 	X_shuffle = shuffle_data(D)
