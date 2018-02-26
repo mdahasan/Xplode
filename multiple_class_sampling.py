@@ -20,7 +20,7 @@ def process_mutliple_class_data(X):
 
 	# compute the number of samples to add in each class
 	max_count = 0
-	min_count = 99999999
+	min_count = 999999
 
 	for i in range(len(unique_classes)):
 		class_count = class_column.count(unique_classes[i])

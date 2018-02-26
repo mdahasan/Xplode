@@ -15,6 +15,7 @@ def process_binary_class_data(X, samples_to_add = None):
 
 	(compatibility, feature_type_list) = check_compatibility(X)
 	
+	# needs to change to accept categorical data
 	if(compatibility == 'False'):
 		print("String data is not supported.")
 		return 0
