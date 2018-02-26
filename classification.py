@@ -21,9 +21,9 @@ from util import *
 def cross_validation(X, y):
 
 	# classifiers to use
-	# clf = svm.SVC(C = 100, gamma = 0.25)
+	clf = svm.SVC(C = 100, gamma = 0.25)
 	# clf = KNeighborsClassifier(n_neighbors=3)
-	clf = DecisionTreeClassifier(random_state=0)
+	# clf = DecisionTreeClassifier(random_state=0)
 
 	# corss-validation scores
 	cross_validation_scores = cross_val_score(clf, X, y, cv = 10, n_jobs = -1)
@@ -51,10 +51,10 @@ def binary_classification_report(X):
 	X, y, X_train, X_test, y_train, y_test = initial_process(X)
 
 	# classifiers to use
-	# clf = svm.SVC(C = 100, gamma = 0.25)
+	clf = svm.SVC(C = 100, gamma = 0.25)
 
 	# clf = KNeighborsClassifier(n_neighbors=3)
-	clf = DecisionTreeClassifier(random_state=0)
+	# clf = DecisionTreeClassifier(random_state=0)
 
 	y_pred = clf.fit(X_train, y_train).predict(X_test)
 	# print('ROC AUC Score: ' + str(metrics.roc_auc_score(y_test, y_pred)))
@@ -138,10 +138,10 @@ def all_class_classification(X):
 	# clf = svm.SVC()
 
 	# classifiers to use
-	# clf = svm.SVC(C = 100, gamma = 0.25)
+	clf = svm.SVC(C = 100, gamma = 0.25)
 
 	# clf = KNeighborsClassifier(n_neighbors=3)
-	clf = DecisionTreeClassifier(random_state=0)
+	# clf = DecisionTreeClassifier(random_state=0)
 
 	y_pred = clf.fit(X_train, y_train).predict(X_test)
 	print('Accuracy: ' + str(metrics.accuracy_score(y_test, y_pred)))
