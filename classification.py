@@ -169,10 +169,10 @@ def multiple_classification_report(X):
 		ovo_roc_auc = ovo_result_dict[key][2]
 		ovo_acc = ovo_result_dict[key][3]
 
-		# print('Between ' + str(class1) + ' and ' + str(class2) + ': ')
-		# print('Mean CV score: ' + str(ovo_mean_cv_score))
-		# print('ROC AUC: ' + str(ovo_roc_auc))
-		# print('Accuracy: ' + str(ovo_acc))
+		print('Between ' + str(class1) + ' and ' + str(class2) + ': ')
+		print('Mean CV score: ' + str(ovo_mean_cv_score))
+		print('ROC AUC: ' + str(ovo_roc_auc))
+		print('Accuracy: ' + str(ovo_acc))
 
 		ovo_mean_cv_score_list.append(ovo_mean_cv_score)
 		ovo_roc_auc_list.append(ovo_roc_auc)
