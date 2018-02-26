@@ -12,8 +12,10 @@ from multiple_class_sampling import *
 from classification import *
 
 def main():
+	option = None
 	# class_option = sys.argv[1]				# -b for binary class, -m for multiclass
 	original_data_file = sys.argv[1]		# read original data file
+	option = sys.argv[2]					# -c if want classification report
 
 	# getting the name of the dataset
 	dataset_name = original_data_file.split('/')[-1]
@@ -39,10 +41,13 @@ def main():
 	elif(len(unique_classes) > 2):
 		D = process_mutliple_class_data(original_X)
 		D.to_csv('resampled_' + str(dataset_name), sep = ',')
-		multiple_classification_report(D)
+		# multiple_classification_report(D)
 
 	else:
 		print('Dataset not well formatted!')
+
+	if(option == '-c'):
+		multiple_classification_report(D)
 
 if __name__ == "__main__":
 	main()
